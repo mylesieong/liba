@@ -1,0 +1,11 @@
+Liba
+
+The utility provide text parsing of given excel (xlsx) file.
+
+Format
+
+$ liba -show {file_name} 
+$ liba -show {file_name} {index_number}
+$ liba -showfull {file_name}
+
+*end*
