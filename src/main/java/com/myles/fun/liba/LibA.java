@@ -72,6 +72,14 @@ public class LibA {
             }
         }
     }
+
+    public void help(){
+        System.out.println("Options:");
+        System.out.println("\t-help\tthis help text.");
+        System.out.println("\t-show {filename}\tshow an xlsx format brief content.");
+        System.out.println("\t-show {filename} {index}\tshow the index row of an xlsx format content.");
+        System.out.println("\t-showfull {filename}\tshow an xlsx format full content.");
+    }
     
     private void printHeader(){
         System.out.println("Category   Description      Detail");

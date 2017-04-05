@@ -8,7 +8,13 @@ public class App{
     public static void main( String[] args ){
         LibA liba = new LibA();
         String excelAddress = "";
-            if (args.length == 2){
+            if (args.length == 1){
+	        
+                if (args[0].compareTo("-help") == 0){
+                    liba.help();           //liba -help
+		}
+
+	    }else if (args.length == 2){
                 
                 if (args[0].compareTo("-show") == 0){
                     liba.load(args[1]);
