@@ -51,8 +51,9 @@ public class LibA {
         if (this.mData.isEmpty()){
             System.out.println("--nothin--");
         }else{
-            for (LibAEntry entry : mData){
-                System.out.println(entry);
+            for (int i = 0; i < mData.size() ; i++ ){
+	        System.out.print(i + "\t");
+                System.out.println(mData.get(i).toString());
             }
         }
     }
@@ -67,8 +68,9 @@ public class LibA {
         if (this.mData.isEmpty()){
             System.out.println("--nothin--");
         }else{
-            for (LibAEntry entry : mData){
-                System.out.println(entry.toStringFull());
+            for (int i = 0; i < mData.size() ; i++ ){
+	        System.out.print(i + "\t");
+                System.out.println(mData.get(i).toStringFull());
             }
         }
     }
@@ -82,7 +84,14 @@ public class LibA {
     }
     
     private void printHeader(){
-        System.out.println("Category   Description      Detail");
+        System.out.print("Ind     ");
+        System.out.print("Category       ");
+        System.out.print("Description                   ");
+        System.out.println("Detail");
+        System.out.print("------- ");
+        System.out.print("-------------- ");
+        System.out.print("----------------------------- ");
+        System.out.println("------------------------ ");
     }
     
     /**
