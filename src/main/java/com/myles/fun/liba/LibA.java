@@ -59,8 +59,11 @@ public class LibA {
     }
     
     public void show(int index){
-        this.printHeader();
-        System.out.println("in show(int) --");
+        System.out.println("<Indx>\t\t" + index);
+        System.out.println("<Ctgry>\t\t" + mData.get(index).getCategory());
+        System.out.println("<Dscrptn>\t" + mData.get(index).getDescription());
+        System.out.println("<Detail>");
+        System.out.println(mData.get(index).getDetail());
     }
     
     public void showfull(){
@@ -112,32 +115,34 @@ public class LibA {
         public void setDetail(String detail){this.mDetail = detail;}
         
         public String toString(){
+
 	    int categoryLength = this.mCategory.length();
-            String categoryString = toFixLengthString(this.mCategory, 14);
+            String categoryString = toFixLengthString(this.mCategory, 14).replaceAll("\\n+", "");
 
 	    int descriptionLength = this.mDescription.length();
-            String descriptionString = toFixLengthString(this.mDescription, 29);
+            String descriptionString = toFixLengthString(this.mDescription, 29).replaceAll("\\n+", "");
 
 	    int detailLength = this.mDetail.length();
-            String detailString = toFixLengthString(this.mDetail, 24);
-            //String detail = this.mDetail.length()>15?this.mDetail.substring(0,15)+"...":this.mDetail;
+            String detailString = toFixLengthString(this.mDetail, 24).replaceAll("\\n+", "");
 
             return categoryString + " " + descriptionString + " " + detailString; 
         }
 
         public String toStringFull(){
-            String category = this.mCategory;
-            String description = this.mDescription;
-            String detail = this.mDetail;
+
+            String category = this.mCategory.replaceAll("\\n+", "");
+            String description = this.mDescription.replaceAll("\\n+", "");
+            String detail = this.mDetail.replaceAll("\\n+", "");
             return category + " " + description + " " + detail; 
+
         }
 
 	private String toFixLengthString(String str, int len){
 	    String resultString;
 	    if ( str.length() > len - 3 ){
-	        resultString = str.replaceAll("\\n+", "").substring(0, len - 3) + "...";
+	        resultString = str.substring(0, len - 3) + "...";
 	    }else{
-	        resultString = str.replaceAll("\\n+", "");
+	        resultString = str;
 	        for (int i = 0; i < len - str.length() ; i++){
 	            resultString = resultString + " ";
 		}
