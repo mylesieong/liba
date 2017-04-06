@@ -112,10 +112,17 @@ public class LibA {
         public void setDetail(String detail){this.mDetail = detail;}
         
         public String toString(){
-            String category = this.mCategory;
-            String description = this.mDescription;
-            String detail = this.mDetail.length()>15?this.mDetail.substring(0,15)+"...":this.mDetail;
-            return category + " " + description + " " + detail; 
+	    int categoryLength = this.mCategory.length();
+            String categoryString = toFixLengthString(this.mCategory, 14);
+
+	    int descriptionLength = this.mDescription.length();
+            String descriptionString = toFixLengthString(this.mDescription, 29);
+
+	    int detailLength = this.mDetail.length();
+            String detailString = toFixLengthString(this.mDetail, 24);
+            //String detail = this.mDetail.length()>15?this.mDetail.substring(0,15)+"...":this.mDetail;
+
+            return categoryString + " " + descriptionString + " " + detailString; 
         }
 
         public String toStringFull(){
@@ -124,6 +131,19 @@ public class LibA {
             String detail = this.mDetail;
             return category + " " + description + " " + detail; 
         }
+
+	private String toFixLengthString(String str, int len){
+	    String resultString;
+	    if ( str.length() > len - 3 ){
+	        resultString = str.replaceAll("\\n+", "").substring(0, len - 3) + "...";
+	    }else{
+	        resultString = str.replaceAll("\\n+", "");
+	        for (int i = 0; i < len - str.length() ; i++){
+	            resultString = resultString + " ";
+		}
+	    }
+            return resultString;
+	}
     }
 }
 	
